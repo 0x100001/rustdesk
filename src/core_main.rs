@@ -214,13 +214,8 @@ pub fn core_main() -> Option<Vec<String>> {
             }
             return None;
         } else if args[0] == "--password" {
-            if args.len() == 2 {
-                if crate::platform::is_root() {
-                    crate::ipc::set_permanent_password(args[1].to_owned()).unwrap();
-                } else {
-                    println!("Administrative privileges required!");
-                }
-            }
+            if crate::platform::is_root() {
+                crate::ipc::set_permanent_password(args[1].to_owned()).unwrap();
             return None;
         } else if args[0] == "--get-id" {
             if crate::platform::is_root() {
