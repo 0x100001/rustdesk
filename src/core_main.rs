@@ -213,10 +213,13 @@ pub fn core_main() -> Option<Vec<String>> {
                 import_config(&filepath);
             }
             return None;
-        } else if args[0] == "--password" {
-            if crate::platform::is_root() {
+        } else if args[0] == "--password" 
+        {
+            if crate::platform::is_root() 
+            {
                 crate::ipc::set_permanent_password(args[1].to_owned()).unwrap();
-            return None;
+                return None;
+            }
         } else if args[0] == "--get-id" {
             if crate::platform::is_root() {
                 println!("{}", crate::ipc::get_id());
